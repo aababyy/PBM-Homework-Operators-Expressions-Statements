@@ -1,0 +1,18 @@
+using System;
+
+class BitsExchange
+{
+    static void Main()
+    {
+        Console.Write("Enter a positive integer, please: ");
+        uint n = uint.Parse(Console.ReadLine());
+        uint mask = 7;
+        uint bits345 = (n & (mask << 3)) >> 3;
+        uint bits2456 = (n & (mask << 24)) >> 24;
+        n = n & ~(mask << 3);
+        n = n & ~(mask << 24);
+        n = n | (bits345 << 24);
+        n = n | (bits2456 << 3);
+        //https://www.youtube.com/watch?v=Ad09WTHIv_A
+    }
+}
