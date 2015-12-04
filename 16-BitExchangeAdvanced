@@ -1,0 +1,42 @@
+using System;
+
+class BitExchangeAdvanced
+{
+    static void Main()
+    {
+        Console.Write("n= ");
+        ulong n = ulong.Parse(Console.ReadLine());
+        Console.Write("p= ");
+        int p = int.Parse(Console.ReadLine());
+        Console.Write("q= ");
+        int q = int.Parse(Console.ReadLine());
+        Console.Write("k= ");
+        int k = int.Parse(Console.ReadLine());
+        uint m = (uint)n;
+
+        if (((p + k - 1) > 32) || ((p + k - 1) > 31) || (n > 4294967295))
+        {
+            Console.WriteLine("out of range");
+        }
+        else if ((Math.Min(p, q) + k - 1) >= Math.Max(p, q))
+        {
+            Console.WriteLine("overlapping");
+        }
+        else
+        {
+            for (int i = p; i <= p + k - 1; i++)
+            {
+                uint mask = 1;
+                uint bitQ = (m & (mask << q)) >> q;
+                uint bitP = (m & (mask << i)) >> i;
+                m = m & ~(mask << i);
+                m = m & ~(mask << q);
+                m = m | (bitP << q);
+                m = m | (bitQ << i);
+                q++;
+            }
+            Console.WriteLine(n);
+        }
+        //https://www.youtube.com/watch?v=Ad09WTHIv_A
+    }
+}
