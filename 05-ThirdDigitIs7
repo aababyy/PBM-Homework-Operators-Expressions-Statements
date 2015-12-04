@@ -1,0 +1,28 @@
+using System;
+
+class ThirdDigitIs7
+{
+    static void Main()
+    {
+        Console.Write("Enter an integer, please: ");
+        string num = Console.ReadLine();
+
+        //Version 1
+        Console.WriteLine((num.Length >= 3) && ((num.Substring((num.Length - 3), 1)) == "7"));
+
+        //Version 2
+        Console.WriteLine((num.Length >= 3) && (num[num.Length - 3] == '7'));
+
+        //Version 3
+        int n = Math.Abs(int.Parse(Console.ReadLine()));
+        bool isSeven = (((n / 100) % 10) == 7);
+        Console.WriteLine(isSeven);
+
+        //Version 4
+        int x = int.Parse(Console.ReadLine());
+        int xx = x / 100;
+        int xxx = xx % 10;
+        bool isSev = (xxx == 7);
+        Console.WriteLine(isSeven);
+    }
+}
