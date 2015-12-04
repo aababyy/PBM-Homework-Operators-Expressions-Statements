@@ -1,0 +1,14 @@
+using System;
+
+class BitwiseExtractBit3
+{
+    static void Main()
+    {
+        Console.Write("Enter an integer, please: ");
+        int n = int.Parse(Console.ReadLine());
+        int nRight3 = n >> 3;
+        int bit = nRight3 & 1;
+        Console.WriteLine(bit);
+        //page 23 from the presentation
+    }
+}
