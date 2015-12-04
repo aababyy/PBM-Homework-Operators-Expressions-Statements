@@ -1,0 +1,22 @@
+using System;
+
+class PointInACircle
+{
+    static void Main()
+    {
+        /*
+        The LINE connecting the center of the circle and the point Z is the
+        hypotenuse of the right-angled triangle with cathetuses X and Y,
+        as the hypotenuse should be <= 2, so:
+        (X^2 + Y^2) = LINE^2 should be <= 2^2.
+        */
+        Console.Write("Enter value for X, please: ");
+        double x = double.Parse(Console.ReadLine());
+
+        Console.Write("Enter value for Y, please: ");
+        double y = double.Parse(Console.ReadLine());
+
+        bool isInside = (x * x) + (y * y) <= 2 * 2;
+        Console.WriteLine(isInside);
+    }
+}
