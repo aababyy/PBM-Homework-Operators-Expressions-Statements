@@ -1,0 +1,26 @@
+using System;
+
+class PointInCircleOutRectangle
+{
+    static void Main()
+    {
+        Console.Write("Enter value for X, please: ");
+        double x = double.Parse(Console.ReadLine());
+
+        Console.Write("Enter value for Y, please: ");
+        double y = double.Parse(Console.ReadLine());
+
+        bool isInsideC = ((x - 1) * (x - 1)) + ((y - 1) * (y - 1)) <= (1.5 * 1.5);
+        bool isInsideR = (x >= -1) && (x <= 5) && (y >= -1) && (y <= 1);
+        //bool isOutsideR = y >= 1; Should be enough in this case, I think
+
+        if (isInsideC && !isInsideR)
+        {
+            Console.WriteLine("yes");
+        }
+        else
+        {
+            Console.WriteLine("no");
+        }
+    }
+}
