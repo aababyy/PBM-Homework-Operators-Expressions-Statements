@@ -1,0 +1,32 @@
+using System;
+
+class KingOfThieves
+{
+    static void Main()
+    {
+        int n = int.Parse(Console.ReadLine());
+        char c = (char)Console.Read();
+        int count = n / 2;
+
+        for (int i = 1; i <= n; i++)
+        {
+            if (i == ((n / 2) + 1))
+            {
+                Console.WriteLine(new String(c, n));
+            }
+            else
+            {
+                Console.WriteLine(new String('-', count) + new String(c, (n - (2 * count))) + new String('-', count));
+            }
+
+            if ((i > 0) && (i <= (n / 2)))
+            {
+                count = count - 1;
+            }
+            if ((i >= ((n / 2) + 1)) && (i <= n))
+            {
+                count = count + 1;
+            }
+        }
+    }
+}
