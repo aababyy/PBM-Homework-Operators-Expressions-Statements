@@ -1,0 +1,74 @@
+using System;
+using System.Collections.Generic;
+
+class BitsAtCrossroads
+{
+    static void Main()
+    {
+        int n = int.Parse(Console.ReadLine());
+        List<int> coord = new List<int>();
+        int[,] board = new int[n, n];
+        int cross = 0;
+
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                board[i, j] = 0;
+            }
+        }
+
+        string line = Console.ReadLine();
+        while (!line.Equals("end"))
+        {
+            string[] str = line.Split(' ');
+            int y = int.Parse(str[0]);
+            int x = (n - 1) - int.Parse(str[1]);
+            cross += 1;
+
+            board[y, x] = 1;
+
+            for (int i = y - 1, j = x - 1; (i >= 0) && (j >= 0); i--, j--)
+            {
+                board[i, j] += 1;
+            }
+            for (int i = y - 1, j = x + 1; (i >= 0) && (j < n); i--, j++)
+            {
+                board[i, j] += 1;
+            }
+            for (int i = y + 1, j = x + 1; (i < n) && (j < n); i++, j++)
+            {
+                board[i, j] += 1;
+            }
+            for (int i = y + 1, j = x - 1; (i < n) && (j >= 0); i++, j--)
+            {
+                board[i, j] += 1;
+            }
+
+            line = Console.ReadLine();
+        }
+
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                if (board[i, j] > 1)
+                {
+                    board[i, j] = 1;
+                    cross = cross + 1;
+                }
+            }
+        }
+
+        for (int i = 0; i < n; i++)
+        {
+            string bin = string.Empty;
+            for (int j = 0; j < n; j++)
+            {
+                bin = bin + board[i, j];
+            }
+            Console.WriteLine(Convert.ToInt64(bin, 2));
+        }
+        Console.WriteLine(cross);
+    }
+}
